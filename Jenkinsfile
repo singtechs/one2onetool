@@ -104,7 +104,7 @@ pipeline {
                         echo 'Staging branch detected, deploying with test data'
                         sh './deploy_ecs.sh-test'
                     } else {
-                        sh './deploy_ecs.sh'
+                        sh './deploy_ec2.sh'
                     } 
                 }
                 }
