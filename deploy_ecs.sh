@@ -15,4 +15,4 @@ TASK_REVISION=`aws ecs describe-task-definition --task-definition ${TASK_FAMILY}
 #    DESIRED_COUNT="1"
 #fi
 
-aws ecs update-service --cluster one2onetool-cluster --service ${SERVICE_NAME} --task-definition ${TASK_FAMILY}:${TASK_REVISION} --desired-count 1
+#aws ecs update-service --cluster one2onetool-cluster --service ${SERVICE_NAME} --task-definition ${TASK_FAMILY}:${TASK_REVISION} --desired-count 1
