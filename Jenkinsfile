@@ -91,20 +91,20 @@ pipeline {
             }
             steps {
                 script {
-                    sh 'export AWS_DEFAULT_OUTPUT="json"'
-                    withAWS(credentials: 'AWS_ACCESS_KEY_ID', region: 'ap-southeast-1') {
+                    //sh 'export AWS_DEFAULT_OUTPUT="json"'
+                    //withAWS(credentials: 'AWS_ACCESS_KEY_ID', region: 'ap-southeast-1') {
                     //withCredentials([string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID')]) {
                         //sh 'aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID}'
                     //}
                     //withCredentials([string(credentialsId: 'AWS_Secret_Access_Key', variable: 'AWS_Secret_Access_Key')]) {
                     //    sh 'aws configure set aws_secret_access_key ${AWS_Secret_Access_Key}'
                     //}
-                    sh 'aws configure set default.region ap-southeast-1'
+                    //sh 'aws configure set default.region ap-southeast-1'
                     if (env.BRANCH_NAME=="staging") {
                         echo 'Staging branch detected, deploying with test data'
-                        sh './deploy_ec2-test.sh'
+                        sh './deploy_ec2-test.sh staging'
                     } else {
-                        sh './deploy_ec2.sh'
+                        sh './deploy_ec2.sh master'
                     } 
                 }
                 }
@@ -140,5 +140,9 @@ pipeline {
                     subject: "Jenkins Build FAILED: Job ${env.JOB_NAME}"
             }
         }
+        success {  
+             echo 'This will run only if successful'  
+             mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Deployed successfully : Project name -> ${env.JOB_NAME}", to: "brigeshbgp@gmail.com";  
+         }  
     }
 }
