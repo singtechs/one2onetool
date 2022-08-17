@@ -92,7 +92,7 @@ pipeline {
             steps {
                 script {
                     sh 'export AWS_DEFAULT_OUTPUT="json"'
-                    withAWS(credentials: 'AWS_ACCESS_KEY_ID', region: 'us-west-2') {
+                    withAWS(credentials: 'AWS_ACCESS_KEY_ID', region: 'ap-southeast-1') {
                     //withCredentials([string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID')]) {
                         //sh 'aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID}'
                     //}
