@@ -93,9 +93,9 @@ pipeline {
                 script {                    
                     if (env.BRANCH_NAME=="staging") {
                         echo 'Staging branch detected, deploying with test data'
-                        sh './deploy_ec2-test.sh staging'
+                        sh './deploy_ec2.sh staging'
                     } else {
-                        sh './deploy_ec2.sh master'
+                        sh './deploy_ec2.sh'
                     } 
                 }
                 }
