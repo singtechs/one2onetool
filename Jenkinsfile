@@ -102,7 +102,7 @@ pipeline {
                     sh 'aws configure set default.region ap-southeast-1'
                     if (env.BRANCH_NAME=="staging") {
                         echo 'Staging branch detected, deploying with test data'
-                        sh './deploy_ecs.sh-test'
+                        sh './deploy_ec2-test.sh'
                     } else {
                         sh './deploy_ec2.sh'
                     } 
