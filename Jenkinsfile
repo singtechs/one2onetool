@@ -100,7 +100,6 @@ pipeline {
                 }
                 }
 
-            }
         } 
         stage('Cleanup image') {
             agent any
@@ -132,5 +131,4 @@ pipeline {
             }
         }
     }
-}
 }
