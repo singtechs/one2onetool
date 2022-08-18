@@ -99,7 +99,7 @@ pipeline {
                         sh 'ssh -o StrictHostKeyChecking=no ec2-user@ec2-3-144-71-224.us-east-2.compute.amazonaws.com "docker stop one2onetool; \
                          ./deploy_ec2.sh staging"'
                     } else {
-                        sh 'scp deploy_ec2.sh -o StrictHostKeyChecking=no ec2-user@ec2-3-144-71-224.us-east-2.compute.amazonaws.com:~/'
+                        sh 'scp deploy_ec2.sh ec2-user@ec2-3-144-71-224.us-east-2.compute.amazonaws.com:~/'
                         sh 'ssh -o StrictHostKeyChecking=no ec2-user@ec2-3-144-71-224.us-east-2.compute.amazonaws.com "docker stop one2onetool; \
                         ~/deploy_ec2.sh "'
                     } 
