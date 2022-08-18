@@ -1,5 +1,5 @@
 #!/bin/bash
-IMAGE_VERSION="v_"${BUILD_NUMBER}
+IMAGE_VERSION=${BUILD_NUMBER}
 REMOTE_USER="ec2-user"
 #REMOTE_HOST="3.144.71.224"
 REMOTE_HOST="ec2-3-144-71-224.us-east-2.compute.amazonaws.com"
