@@ -17,7 +17,6 @@ docker rmi -f $(docker images -aq)
 if [ $1 = "staging" ]; then   
     docker container run -dt -p 3000:3000 -e DATA_FILE=Questions-test.json --name one2onetool singtechs/one2onetool:v_S${IMAGE_VERSION}    
 else
-    #docker pull singtechs/one2onetool:v_R${IMAGE_VERSION}
     docker container run -dt -p 3000:3000 --name one2onetool singtechs/one2onetool:v_R${IMAGE_VERSION}
 fi
 # check the running container
