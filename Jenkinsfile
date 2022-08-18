@@ -75,7 +75,11 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker') {
-                        app.push("v_${env.BUILD_NUMBER}")
+                        if (env.BRANCH_NAME=="staging") {
+                            app.push("v_S${env.BUILD_NUMBER}")
+                        } else {
+                            app.push("v_R${env.BUILD_NUMBER}")
+                        } 
                         app.push("latest")
                     }
                 }
