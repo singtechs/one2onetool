@@ -1,6 +1,6 @@
 #!/bin/bash
 #IMAGE_VERSION=${BUILD_NUMBER}
-IMAGE_VERSION=${2}
+IMAGE_VERSION=$2
 REMOTE_USER="ec2-user"
 #REMOTE_HOST="3.144.71.224"
 REMOTE_HOST="ec2-3-144-71-224.us-east-2.compute.amazonaws.com"
@@ -14,7 +14,7 @@ docker rm -vf $(docker ps -aq)
 docker rmi -f $(docker images -aq)
 # run the conatiner
 #docker container run -dt -p 3000:3000 --name one2onetool singtechs/one2onetool:${IMAGE_VERSION}
-if [ ${1} = "staging" ]; then   
+if [ $1 = "staging" ]; then   
     docker container run -dt -p 3000:3000 -e DATA_FILE=Questions-test.json --name one2onetool singtechs/one2onetool:v_S${IMAGE_VERSION}    
 else
     #docker pull singtechs/one2onetool:v_R${IMAGE_VERSION}
