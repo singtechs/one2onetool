@@ -42,7 +42,6 @@ pipeline {
                 sh 'git config --global user.name "Jenkins"'
                 sh 'git tag -l | xargs git tag -d'
                 sh 'git fetch --tags'
-                //sh 'npm version major -m "[ci skip] Upgrade to %s"'
                 script { 
                     if (env.BRANCH_NAME=="master") {
                         withCredentials([usernamePassword(credentialsId: 'e681cd13-0f88-4a24-8bb5-e42e2245fdc5', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
@@ -130,9 +129,9 @@ pipeline {
                     subject: "Jenkins Build FAILED: Job ${env.JOB_NAME}"
             }
         }
-        //success {  
-             //echo 'This will run only if successful build'  
-             //mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Deployed successfully : Project name -> ${env.JOB_NAME}", to: "brigeshbgp@gmail.com";  
-        // } 
+        success {  
+             echo 'This will run only if successful build'  
+             mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Deployed successfully : Project name -> ${env.JOB_NAME}", to: "brigeshbgp@gmail.com";  
+         } 
     }
 }
