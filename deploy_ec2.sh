@@ -7,7 +7,7 @@ REMOTE_HOST="ec2-3-144-71-224.us-east-2.compute.amazonaws.com"
 #sh 'scp deploy.sh ${REMOTE_USER}@${REMOTE_HOST}:~/'
 #sh 'ssh ${REMOTE_USER}@${REMOTE_HOST} "chmod +x deploy.sh"'
 ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_HOST}
-
+#ssh -o StrictHostKeyChecking=no ec2-user@ec2-3-144-71-224.us-east-2.compute.amazonaws.com
 # Clean old images 
 docker rm -vf $(docker ps -aq)
 docker rmi -f $(docker images -aq)
