@@ -95,9 +95,10 @@ pipeline {
             steps {
                 script {                    
                     if (env.BRANCH_NAME=="staging") {
-                        echo 'Staging branch detected, deploying with test data' 
+                        echo 'Staging branch detected, deploying with test data..' 
                         sh '"./deploy_ec2.sh staging $BUILD_NUMBER"'
                     } else {
+                        echo 'Release branch detected, deploying...' 
                         sh 'scp deploy_ec2.sh ec2-user@ec2-3-144-71-224.us-east-2.compute.amazonaws.com:~/'
                         sh 'ssh -o StrictHostKeyChecking=no ec2-user@ec2-3-144-71-224.us-east-2.compute.amazonaws.com "~/deploy_ec2.sh release $BUILD_NUMBER"'
                     } 
